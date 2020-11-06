@@ -31,7 +31,9 @@
 
  ***
 ### 2.导入
-        
+
+> excel 中的表头行的名称必须与Display特性的name或属性名称对应，导入类中的所有非忽略属性在表头中必须存在
+
         //导入类
         public class ImportTest
         {
@@ -62,6 +64,9 @@
             public virtual TestEnum? Edu { get; set; }
 
             public virtual string NoDisplayName { get; set; }
+
+            [IgnoreColumn]
+            public virtual string IgnoreName { get; set; }
         }
 
         //导入方法
@@ -108,7 +113,7 @@
 ***
 ### 3.导出
 
-> 若无其他特殊要求，该 ExportTest 上的特性，只需要 Display 即可。
+> 若无其他特殊需求，该 ExportTest 上的所有特性，只需要 Display 即可。
 
         //导出类
         [HeaderStyle(ColumnAutoSize = true)]
