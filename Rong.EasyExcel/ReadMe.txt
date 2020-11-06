@@ -1,6 +1,6 @@
 ﻿# EasyExcel
 
->当前已集成 NPOI、EpPlus 两种方式。其他方式可自行参照下列说明快速集成。
+>当前已集成 NPOI、EpPlus 两种方式。其他方式可自行参照项目地址中的 ReadMe.txt 文档说明快速集成。
 
 >使用方法请看 ExcelDemo.cs。 
 

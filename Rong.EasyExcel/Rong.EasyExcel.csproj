@@ -5,8 +5,7 @@
     <PackageProjectUrl>https://github.com/ygr757326/EasyExcel</PackageProjectUrl>
     <Description>Net Core 中 Excel 导入、导出，简单易用。
 导入支持： 单/多个sheet导入、 DataAnnotations 数据验证、默认值、字段忽略、指定行区间导入等。
-导出支持： 样式、字体、列宽、行高、列合并、行合并、列统计、数据格式化 等设置。
-当前已集成 NPOI、EpPlus 两种方式。其他方式可自行参照 ReadMe.txt 文档说明快速集成。</Description>
+导出支持： 样式、字体、列宽、行高、列合并、行合并、列统计、数据格式化 等设置。</Description>
     <PackageTags>EasyExcel NetCore excel Import Export</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>ygr</Authors>
