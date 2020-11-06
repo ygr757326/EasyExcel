@@ -1,4 +1,4 @@
-# EasyExcel
+﻿# EasyExcel
 
 >当前已集成 NPOI、EpPlus 两种方式。其他方式可自行参照下列说明快速集成。
 
@@ -220,5 +220,47 @@
 * 自动判断列合并：如 指定属性1/属性2/属性3 ,但只导出其中两个且相邻，则这两个也会进行列合并
 
 * 列统计指定展示到某属性列，若指定属性列存在，则展示到指定属性列，若不存在则展示到当前属性列
+
+***
+### 4.集成其他导入导出：
+
+> 导入请继承并实现以下类：
+
+    * ExcelImportBase.cs【参照 NpoiExcelImportBase.cs】
+    * ExcelImportManager.cs 【参照 NpoiExcelImportProvider.cs】，在 xxxxExcelImportProvider 中实例化 ExcelImportBase。如：
+
+        protected override List<ExcelSheetDataOutput<TImportDto>> ImplementImport<TImportDto>(Stream fileStream, Action<ExcelImportOptions> optionAction)
+        {
+            xxxExcelImportBase import = new xxxExcelImportBase();
+
+            return import.ProcessExcelFile<TImportDto>(fileStream, optionAction);
+        }
+
+> 导出请继承并实现以下类：
+
+   * ExcelExportBase.cs【参照 NpoiExcelExportBase.cs】
+   * ExcelExportManager.cs 【参照 NpoiExcelExportProvider.cs】，在 xxxxExcelExportProvider 中实例化 ExcelExportBase。如：
+
+        protected override byte[] ImplementExport<TExportDto>(List<TExportDto> data, Action<ExcelExportOptions> optionAction, string[] onlyExportHeaderName)
+        {
+            xxxExcelExportBase export = new xxxExcelExportBase();
+
+            return export.Export<TExportDto>(data, optionAction, onlyExportHeaderName);
+        }
+
+> 扩展：
+
+    设置 IExcelImportManager 和 IExcelExportManager 的实现【参照 NpoiExcelExtensions.cs】 如：
+
+        public static void AddxxxExcel(this IServiceCollection services)
+        {
+            ……
+
+            services.AddTransient<IExcelImportManager, xxxExcelImportProvider>();
+            services.AddTransient<IExcelExportManager, xxxExcelExportProvider>();
+        }
+
+
+    实现扩展后可按照 步骤 1 来设置服务
 
 

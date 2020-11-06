@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageProjectUrl>https://github.com/ygr757326/EasyExcel</PackageProjectUrl>
+    <Description>Net Core 中 Excel 导入、导出，简单易用。
+导入支持： 单/多个sheet导入、 DataAnnotations 数据验证、默认值、字段忽略、指定行区间导入等。
+导出支持： 样式、字体、列宽、行高、列合并、行合并、列统计、数据格式化 等设置。
+当前已集成 NPOI、EpPlus 两种方式。其他方式可自行参照 ReadMe.txt 文档说明快速集成。</Description>
+    <PackageTags>EasyExcel NetCore excel Import Export</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>ygr</Authors>
+    <Product>Rong.EasyExcel</Product>
+    <Company>ygr</Company>
+    <PackageId>Rong.EasyExcel</PackageId>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="4.5.3.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9" />
+    <PackageReference Include="NPOI" Version="2.5.1" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
