@@ -14,6 +14,8 @@
     <PackageId>Rong.EasyExcel</PackageId>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <SignAssembly>false</SignAssembly>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

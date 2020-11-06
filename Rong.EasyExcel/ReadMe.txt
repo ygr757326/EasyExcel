@@ -23,11 +23,13 @@
 
 在 Startup.cs 中 添加服务（选其一即可，多个则取最后一个）
 
-  //使用Npoi
-  services.AddNpoiExcel();
+    * 使用 Npoi
+
+    services.AddNpoiExcel();
   
-  //使用 EpPlus
-  services.AddEpPlusExcel();
+    * 使用 EpPlus
+
+    services.AddEpPlusExcel();
 
  ***
 ### 2.导入
