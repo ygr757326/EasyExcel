@@ -16,7 +16,7 @@
 ***
 ### 导出支持： 
 
-样式、字体、列宽、行高、列合并、行合并、列统计、数据格式化 等设置。
+样式、字体、列宽、行高、列合并、行合并、列统计、数据格式化、指定表头导出 等设置。
 
 ***
 ### 1.添加服务.
@@ -181,18 +181,33 @@
             }
         }
 
+        // 获取excel文件
+        public FileStreamResult GetExcel(byte[] buffer)
+        {
+            string xlsMime = "application/vnd.ms-excel";
+            string xlsxMime = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
+            Stream stream = new MemoryStream(buffer);
+            stream.Seek(0, SeekOrigin.Begin);
+
+            return new FileStreamResult(stream, xlsxMime)
+            {
+                FileDownloadName = "导出的Excel.xlsx"
+            };
+        }
+
 ***
 #### 说明
 
-*  表头：表头名称对应 System.ComponentModel.DataAnnotations 下的 Display 特性的 Name ，若不存在 Display 特性 ，则使用 TImportDto 属性名称作为表头
+* 表头：表头名称对应 System.ComponentModel.DataAnnotations 下的 Display 特性的 Name ，若不存在 Display 特性 ，则使用 TImportDto 属性名称作为表头
 
-*  默认值：若某字段为空但是需要设置默认值时，可使用 DefaultValue 特性，如 [DefaultValue(typeof(DateTime), "2020-9-9")]
+* 默认值：若某字段为空但是需要设置默认值时，可使用 DefaultValue 特性，如 [DefaultValue(typeof(DateTime), "2020-9-9")]
 
-*   忽略字段：可使用 ColumnIgnore 特性来忽略导出的 TExportDto 的属性字段，添加该特性的属性字段不会被导出
+* 忽略字段：可使用 ColumnIgnore 特性来忽略导出的 TExportDto 的属性字段，添加该特性的属性字段不会被导出
 
-*   配置：_excelExportManager.Export 的第二个参数 ExcelExportOptions 可进行配置
+* 配置：_excelExportManager.Export 的第二个参数 ExcelExportOptions 可进行配置
 
-*   指定表头和顺序：可使用第三个参数指定筛选只需要导出的字段，不指定则按 TExportDto 字段顺序导出全部，指定则按数组顺序导出
+* 指定表头和顺序：可使用第三个参数指定筛选只需要导出的字段，不指定则按 TExportDto 字段顺序导出全部，指定则按数组顺序导出【导出的表头字段可通过_excelExportManager.GetExportHeader<ExportTest>()方法获取】
         
 ***
 #### 样式、字体
