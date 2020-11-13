@@ -109,7 +109,7 @@
 * 表头：表头名称对应 System.ComponentModel.DataAnnotations 下的 Display 特性的 Name ，若不存在 Display 特性 ，则使用 TImportDto 属性名称作为表头
 * 验证：字段验证可使用 System.ComponentModel.DataAnnotations 的所有特性，如 Required，StringLength，Range，RegularExpression，EnumDataType等
 * 默认值：若某字段为空但是需要设置默认值时，可使用 DefaultValue 特性，如 [DefaultValue(typeof(DateTime), "2020-9-9")]
-* 忽略字段：可使用 ColumnIgnore 特性来忽略导入的 TImportDto 的属性字段，添加该特性的属性字段不会被单元格赋值和验证
+* 忽略字段：可使用 IgnoreColumn 特性来忽略导入的 TImportDto 的属性字段，添加该特性的属性字段不会被单元格赋值和验证
 * 配置：_excelImportManager.Import 的第二个参数 ExcelImportOptions 可进行配置
 
 ***
@@ -171,7 +171,7 @@
                 {
                     //opt.ExcelType = ExcelTypeEnum.Xlsx;
                     //opt.SheetName = "sheet名称";
-                },new []{"姓名","日期"});
+                },new []{"姓名","生日"});
 
                 return bytes;
             }
@@ -203,7 +203,7 @@
 
 * 默认值：若某字段为空但是需要设置默认值时，可使用 DefaultValue 特性，如 [DefaultValue(typeof(DateTime), "2020-9-9")]
 
-* 忽略字段：可使用 ColumnIgnore 特性来忽略导出的 TExportDto 的属性字段，添加该特性的属性字段不会被导出
+* 忽略字段：可使用 IgnoreColumn 特性来忽略导出的 TExportDto 的属性字段，添加该特性的属性字段不会被导出
 
 * 配置：_excelExportManager.Export 的第二个参数 ExcelExportOptions 可进行配置
 
